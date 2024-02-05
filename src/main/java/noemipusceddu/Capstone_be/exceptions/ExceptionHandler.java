@@ -21,4 +21,10 @@ public class ExceptionHandler {
     public ErrorDTO handleNotFound(NotFoundException e){
         return new ErrorDTO(e.getMessage(), LocalDateTime.now());
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(BadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDTO handleBadRequest(BadRequestException e){
+        return new ErrorDTO(e.getMessage(), LocalDateTime.now());
+    }
 }

@@ -18,8 +18,6 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserDAO userDAO;
-    @Autowired
-    private PasswordEncoder bcrypt;
 
     public Page<User> getUsers(int page, int size, String orderBy){
         Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
@@ -34,14 +32,7 @@ public class UserService {
         return userDAO.findByEmail(email).orElseThrow(()-> new NotFoundException("User with email " + email + " not found!"));
     }
 
-    public User findByIdAndUpdate(UUID id, UserDTO body){
-        User user = this.findById(id);
-        user.setName(body.name());
-        user.setSurname(body.surname());
-        user.setEmail(body.email());
-        user.setPassword(bcrypt.encode(body.password()));
-        return userDAO.save(user);
-    }
+
 
     public void deleteById(UUID id){
         User user = this.findById(id);

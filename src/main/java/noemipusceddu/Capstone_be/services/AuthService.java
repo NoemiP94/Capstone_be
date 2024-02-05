@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -41,7 +42,7 @@ public class AuthService {
         }
     }
 
-    public User registerUser(UserDTO body) throws IOException{
+    public User saveUser(UserDTO body) throws IOException{
         userDAO.findByEmail(body.email()).ifPresent(a->{
             throw new BadRequestException("User with email " + a.getEmail() + " already exists" );
         });
@@ -51,6 +52,14 @@ public class AuthService {
         user.setEmail(body.email());
         user.setPassword(bcrypt.encode(body.password()));
         user.setRole(Role.ADMIN);
+        return userDAO.save(user);
+    }
+    public User findByIdAndUpdate(UUID id, UserDTO body){
+        User user = userService.findById(id);
+        user.setName(body.name());
+        user.setSurname(body.surname());
+        user.setEmail(body.email());
+        user.setPassword(bcrypt.encode(body.password()));
         return userDAO.save(user);
     }
 

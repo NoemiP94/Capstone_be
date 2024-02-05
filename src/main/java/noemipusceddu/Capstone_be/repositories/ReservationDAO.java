@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface Reservation extends JpaRepository<Reservation, UUID> {
+public interface ReservationDAO extends JpaRepository<ReservationDAO, UUID> {
 }

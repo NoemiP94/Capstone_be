@@ -4,17 +4,26 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import noemipusceddu.Capstone_be.entities.User;
 import noemipusceddu.Capstone_be.exceptions.UnauthorizedException;
+import noemipusceddu.Capstone_be.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.UUID;
 
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JWTTools jwtTools;
+
+    @Autowired
+    private UserService userService;
 
 
     @Override
@@ -26,9 +35,9 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             String token = authHeader.substring(7);
             jwtTools.verifyToken(token);
             String id = jwtTools.extractIdFromToken(token);
-            //User currentUser = userService.findById(UUID.fromString(id));
-           //Authentication authentication = new UsernamePasswordAuthenticationToken(currentUser, null, currentUser.getAuthorities());
-            //SecurityContextHolder.getContext().setAuthentication(authentication);
+            User currentUser = userService.findById(UUID.fromString(id));
+            Authentication authentication = new UsernamePasswordAuthenticationToken(currentUser, null, currentUser.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
             filterChain.doFilter(request, response);
         }
     }

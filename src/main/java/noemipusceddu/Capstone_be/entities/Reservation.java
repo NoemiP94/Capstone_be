@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -21,7 +22,7 @@ public class Reservation {
     private String email;
     private String name;
     private String surname;
-    private LocalDate dateOfReservation;
+    private LocalDateTime dateOfReservation;
     private LocalDate date;
     private String text;
     private Long phoneNumber;

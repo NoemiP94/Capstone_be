@@ -21,8 +21,8 @@ public class UserService {
     @Autowired
     private PasswordEncoder bcrypt;
 
-    public Page<User> getUsers(int page, int size, String sort){
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+    public Page<User> getUsers(int page, int size, String orderBy){
+        Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
         return userDAO.findAll(pageable);
     }
 

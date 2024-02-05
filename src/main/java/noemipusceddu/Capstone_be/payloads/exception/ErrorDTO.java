@@ -1,4 +1,4 @@
-package noemipusceddu.Capstone_be.payload.exception;
+package noemipusceddu.Capstone_be.payloads.exception;
 
 import java.time.LocalDateTime;
 

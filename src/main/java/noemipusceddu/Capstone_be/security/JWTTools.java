@@ -3,7 +3,7 @@ package noemipusceddu.Capstone_be.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import noemipusceddu.Capstone_be.entities.User;
-import noemipusceddu.Capstone_be.exception.UnauthorizedException;
+import noemipusceddu.Capstone_be.exceptions.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package noemipusceddu.Capstone_be.security_config;
+package noemipusceddu.Capstone_be.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

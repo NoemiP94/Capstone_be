@@ -1,5 +1,7 @@
 package noemipusceddu.Capstone_be.services;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import noemipusceddu.Capstone_be.entities.Blogpost;
 import noemipusceddu.Capstone_be.exceptions.NotFoundException;
 import noemipusceddu.Capstone_be.payloads.blogpost.BlogpostDTO;
@@ -10,13 +12,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Service
 public class BlogpostService {
     @Autowired
     private BlogpostDAO blogpostDAO;
+    @Autowired
+    private Cloudinary cloudinary;
 
 
     public Page<Blogpost> findAll(int page, int size, String orderBy){
@@ -33,7 +39,6 @@ public class BlogpostService {
         blogpost.setTitle(body.title());
         blogpost.setContent(body.content());
         blogpost.setDate(body.date());
-        blogpost.setImage(body.image());
         return blogpostDAO.save(blogpost);
     }
 
@@ -42,11 +47,18 @@ public class BlogpostService {
         found.setTitle(body.title());
         found.setContent(body.content());
         found.setDate(body.date());
-        found.setImage(body.image());
         return blogpostDAO.save(found);
     }
 
     public void findByIdAndDelete(UUID id){
         Blogpost found = blogpostDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+    }
+
+    public String uploadImage(UUID id, MultipartFile file) throws IOException{
+        Blogpost blogpost = blogpostDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+        String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
+        blogpost.setImage(url);
+        blogpostDAO.save(blogpost);
+        return url;
     }
 }

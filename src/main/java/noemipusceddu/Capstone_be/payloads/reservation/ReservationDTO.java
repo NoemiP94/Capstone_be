@@ -18,8 +18,6 @@ public record ReservationDTO(
         @NotEmpty(message = "This field cannot be empty")
         @NotNull(message = "This field cannot be null")
         String surname,
-        @NotEmpty(message = "This field cannot be empty")
-        @NotNull(message = "This field cannot be null")
         String text,
         @NotNull(message = "This field cannot be null")
         Long phoneNumber,

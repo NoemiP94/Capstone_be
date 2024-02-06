@@ -55,19 +55,52 @@ public class ReservationService {
     }
 
     public Reservation findByIdAndUpdate(UUID id, ReservationDTO body){
-        Visit visit = visitService.findById(body.visit_id());
-        Reservation found = reservationDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
-        found.setEmail(body.email());
-        found.setName(body.name());
-        found.setSurname(body.surname());
-        found.setText(body.text());
-        found.setPhoneNumber(body.phoneNumber());
-        found.setPeople(body.people());
-        found.setVisit_id(visit);
-        return reservationDAO.save(found);
+        Reservation existingRes = reservationDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+
+        Visit oldVisit = existingRes.getVisit_id();
+        Visit newVisit = visitService.findById(body.visit_id());
+
+
+        if(newVisit.getMaxPeople() <= 0){
+            throw new UnavailableVisit("This visit is no longer available");
+        }
+
+        int oldPeople = existingRes.getPeople();
+        int newPeople = body.people();
+        int diffPeople = newPeople - oldPeople;
+
+        if(newVisit.getMaxPeople() < diffPeople){
+            throw new UnavailableVisit("This visit is no longer available");
+        }
+
+        if(!oldVisit.getId().equals(newVisit.getId())){
+            newVisit.setMaxPeople(newVisit.getMaxPeople() - newPeople);
+            oldVisit.setMaxPeople(oldVisit.getMaxPeople() + oldPeople);
+        }else{
+            newVisit.setMaxPeople(newVisit.getMaxPeople() - diffPeople);
+        }
+
+        existingRes.setEmail(body.email());
+        existingRes.setName(body.name());
+        existingRes.setSurname(body.surname());
+        existingRes.setText(body.text());
+        existingRes.setPhoneNumber(body.phoneNumber());
+        existingRes.setPeople(body.people());
+        existingRes.setVisit_id(newVisit);
+
+        reservationDAO.save(existingRes);
+        visitService.updateVisit(newVisit);
+        visitService.updateVisit(oldVisit);
+        return existingRes;
     }
 
     public void findByIdAndDelete(UUID id){
         Reservation found = reservationDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+        Visit visit = found.getVisit_id();
+        int newPeople = found.getPeople();
+
+        reservationDAO.delete(found);
+        visit.setMaxPeople(visit.getMaxPeople() + newPeople);
+        visitService.updateVisit(visit);
     }
 }

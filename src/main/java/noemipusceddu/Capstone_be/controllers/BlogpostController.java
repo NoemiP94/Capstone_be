@@ -39,9 +39,9 @@ public class BlogpostController {
         return blogpostService.findAll(page, size, orderBy);
     }
 
-    @GetMapping("/{uuid}")
-    public Blogpost getBlogpostById(@PathVariable UUID uuid){
-        return blogpostService.findById(uuid);
+    @GetMapping("/detail/{id}")
+    public Blogpost getBlogpostById(@PathVariable UUID id){
+        return blogpostService.findById(id);
     }
 
     @PutMapping("/{id}")

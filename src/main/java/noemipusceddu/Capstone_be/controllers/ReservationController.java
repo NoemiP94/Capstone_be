@@ -8,6 +8,7 @@ import noemipusceddu.Capstone_be.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,7 @@ public class ReservationController {
     }
 
     @GetMapping("/getall")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Page<Reservation> getReservation(@RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "10") int size,
                                  @RequestParam(defaultValue = "id") String orderBy){
@@ -40,17 +42,20 @@ public class ReservationController {
     }
 
     @GetMapping("/detail/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Reservation getReservationById(@PathVariable UUID id){
         return reservationService.findById(id);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Reservation getReservationByIdAndUpdate(@PathVariable UUID id, @RequestBody ReservationDTO body){
         return reservationService.findByIdAndUpdate(id, body);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void getReservationByIdAndDelete(@PathVariable UUID id){
         reservationService.findByIdAndDelete(id);
     }

@@ -8,6 +8,7 @@ import noemipusceddu.Capstone_be.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class VisitController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public VisitResponseDTO createVisit(@RequestBody @Validated VisitDTO visit, BindingResult validation){
         if(validation.hasErrors()){
             System.out.println(validation.getAllErrors());
@@ -45,12 +47,14 @@ public class VisitController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Visit getVisitByIdAndUpdate(@PathVariable UUID id, @RequestBody VisitDTO body){
         return visitService.findByIdAndUpdate(id, body);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void getVisitByIdAndDelete(@PathVariable UUID id){
         visitService.findByIdAndDelete(id);
     }

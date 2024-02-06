@@ -8,6 +8,7 @@ import noemipusceddu.Capstone_be.services.BlogpostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ public class BlogpostController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public BlogpostResponseDTO createBlogpost(@RequestBody @Validated BlogpostDTO blogpost, BindingResult validation){
         if(validation.hasErrors()){
             System.out.println(validation.getAllErrors());
@@ -47,17 +49,20 @@ public class BlogpostController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Blogpost getBlogpostByIdAndUpdate(@PathVariable UUID id, @RequestBody BlogpostDTO body){
         return blogpostService.findByIdAndUpdate(id, body);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void getBlogpostByIdAndDelete(@PathVariable UUID id){
         blogpostService.findByIdAndDelete(id);
     }
 
     @PostMapping("/{id}/image")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String uploadImage(@PathVariable UUID id, @RequestParam("image") MultipartFile body) throws IOException{
         return blogpostService.uploadImage(id, body);
     }

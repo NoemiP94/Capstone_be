@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.aspectj.bridge.IMessage;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record ReservationDTO(
         @NotEmpty(message = "This field cannot be empty")
@@ -17,13 +18,14 @@ public record ReservationDTO(
         @NotEmpty(message = "This field cannot be empty")
         @NotNull(message = "This field cannot be null")
         String surname,
-        @NotNull(message = "This field cannot be null")
-        LocalDateTime dateOfReservation,
         @NotEmpty(message = "This field cannot be empty")
         @NotNull(message = "This field cannot be null")
         String text,
         @NotNull(message = "This field cannot be null")
         Long phoneNumber,
         @NotNull(message = "This field cannot be null")
-        int people ) {
+        int people,
+        @NotNull(message= "This field cannot be null")
+        UUID visit_id
+        ) {
 }

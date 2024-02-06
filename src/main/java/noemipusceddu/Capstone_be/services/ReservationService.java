@@ -1,7 +1,9 @@
 package noemipusceddu.Capstone_be.services;
 
 import noemipusceddu.Capstone_be.entities.Reservation;
+import noemipusceddu.Capstone_be.entities.Visit;
 import noemipusceddu.Capstone_be.exceptions.NotFoundException;
+import noemipusceddu.Capstone_be.exceptions.UnavailableVisit;
 import noemipusceddu.Capstone_be.payloads.reservation.ReservationDTO;
 import noemipusceddu.Capstone_be.repositories.ReservationDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import java.util.UUID;
 public class ReservationService {
     @Autowired
     private ReservationDAO reservationDAO;
+    @Autowired
+    private VisitService visitService;
 
 
     public Page<Reservation> findAll(int page, int size, String orderBy){
@@ -29,27 +33,37 @@ public class ReservationService {
     }
 
     public Reservation saveReservation(ReservationDTO body){
+        Visit visit = visitService.findById(body.visit_id());
         Reservation reservation = new Reservation();
-        reservation.setEmail(body.email());
-        reservation.setName(body.name());
-        reservation.setSurname(body.surname());
-        reservation.setDateOfReservation(body.dateOfReservation());
-        reservation.setDate(LocalDate.now());
-        reservation.setText(body.text());
-        reservation.setPhoneNumber(body.phoneNumber());
-        reservation.setPeople(body.people());
-        return reservationDAO.save(reservation);
+
+        if(visit.getMaxPeople() <= 0){
+            throw new UnavailableVisit("This visit is no longer available!");
+        } else {
+            visit.setMaxPeople(visit.getMaxPeople() - body.people());
+            visitService.updateVisit(visit);
+
+            reservation.setEmail(body.email());
+            reservation.setName(body.name());
+            reservation.setSurname(body.surname());
+            reservation.setDate(LocalDate.now());
+            reservation.setText(body.text());
+            reservation.setPhoneNumber(body.phoneNumber());
+            reservation.setPeople(body.people());
+            reservation.setVisit_id(visit);
+            return reservationDAO.save(reservation);
+        }
     }
 
     public Reservation findByIdAndUpdate(UUID id, ReservationDTO body){
+        Visit visit = visitService.findById(body.visit_id());
         Reservation found = reservationDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
         found.setEmail(body.email());
         found.setName(body.name());
         found.setSurname(body.surname());
-        found.setDateOfReservation(body.dateOfReservation());
         found.setText(body.text());
         found.setPhoneNumber(body.phoneNumber());
         found.setPeople(body.people());
+        found.setVisit_id(visit);
         return reservationDAO.save(found);
     }
 

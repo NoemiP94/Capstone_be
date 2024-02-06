@@ -1,8 +1,6 @@
 package noemipusceddu.Capstone_be.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,9 +20,11 @@ public class Reservation {
     private String email;
     private String name;
     private String surname;
-    private LocalDateTime dateOfReservation;
     private LocalDate date;
     private String text;
     private Long phoneNumber;
     private int people;
+    @ManyToOne
+    @JoinColumn(name= "visit_id")
+    private Visit visit_id;
 }

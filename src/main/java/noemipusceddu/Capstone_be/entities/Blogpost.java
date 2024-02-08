@@ -1,9 +1,6 @@
 package noemipusceddu.Capstone_be.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +17,7 @@ public class Blogpost {
     @Setter(AccessLevel.NONE)
     private UUID id;
     private String title;
+    @Column(columnDefinition= "TEXT")
     private String content;
     private LocalDate date;
     private String image;

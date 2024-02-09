@@ -52,6 +52,7 @@ public class BlogpostService {
 
     public void findByIdAndDelete(UUID id){
         Blogpost found = blogpostDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+        blogpostDAO.delete(found);
     }
 
     public String uploadImage(UUID id, MultipartFile file) throws IOException{

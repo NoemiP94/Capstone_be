@@ -45,6 +45,7 @@ public class VisitService {
 
     public void findByIdAndDelete(UUID id){
         Visit found = visitDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+        visitDAO.delete(found);
     }
 
     public void updateVisit(Visit visit){

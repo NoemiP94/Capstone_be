@@ -11,7 +11,5 @@ public record BlogpostDTO(
         String title,
         @NotNull(message = "This field cannot be null")
         @NotEmpty(message="This field cannot be empty")
-        String content,
-        @NotNull(message = "This field cannot be null")
-        LocalDate date) {
+        String content) {
 }

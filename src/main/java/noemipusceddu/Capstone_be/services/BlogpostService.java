@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -38,7 +39,7 @@ public class BlogpostService {
         Blogpost blogpost = new Blogpost();
         blogpost.setTitle(body.title());
         blogpost.setContent(body.content());
-        blogpost.setDate(body.date());
+        blogpost.setDate(LocalDate.now());
         return blogpostDAO.save(blogpost);
     }
 
@@ -46,7 +47,6 @@ public class BlogpostService {
         Blogpost found = blogpostDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
         found.setTitle(body.title());
         found.setContent(body.content());
-        found.setDate(body.date());
         return blogpostDAO.save(found);
     }
 

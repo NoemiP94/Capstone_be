@@ -25,14 +25,14 @@ paths:
               $ref: '#/components/schemas/VisitDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -43,8 +43,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -67,14 +67,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -85,8 +85,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -112,14 +112,14 @@ paths:
               $ref: '#/components/schemas/ReservationDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -130,8 +130,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -154,14 +154,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -172,8 +172,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -199,14 +199,14 @@ paths:
               $ref: '#/components/schemas/BlogpostDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -217,8 +217,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -241,14 +241,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -259,8 +259,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -279,14 +279,14 @@ paths:
               $ref: '#/components/schemas/VisitDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -297,8 +297,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -321,14 +321,14 @@ paths:
               $ref: '#/components/schemas/ReservationDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -339,8 +339,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -375,14 +375,14 @@ paths:
                   type: string
                   format: binary
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -393,8 +393,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -417,14 +417,14 @@ paths:
               $ref: '#/components/schemas/BlogpostDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -435,8 +435,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -459,14 +459,14 @@ paths:
               $ref: '#/components/schemas/UserDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -477,8 +477,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -501,14 +501,14 @@ paths:
               $ref: '#/components/schemas/UserLoginDTO'
         required: true
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -519,8 +519,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -558,14 +558,14 @@ paths:
           type: string
           default: id
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -576,8 +576,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -601,14 +601,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -619,8 +619,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -658,14 +658,14 @@ paths:
           type: string
           default: id
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -676,8 +676,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -701,14 +701,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -719,8 +719,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -758,14 +758,14 @@ paths:
           type: string
           default: id
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -776,8 +776,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -801,14 +801,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -819,8 +819,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -850,7 +850,7 @@ paths:
         schema:
           type: integer
           format: int32
-          default: 10
+          default: 12
       - name: orderBy
         in: query
         required: false
@@ -858,14 +858,14 @@ paths:
           type: string
           default: id
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -876,8 +876,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -901,14 +901,14 @@ paths:
           type: string
           format: uuid
       responses:
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "500":
-          description: Internal Server Error
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -919,8 +919,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
-        "404":
-          description: Not Found
+        "500":
+          description: Internal Server Error
           content:
             '*/*':
               schema:
@@ -1025,7 +1025,6 @@ components:
     BlogpostDTO:
       required:
       - content
-      - date
       - title
       type: object
       properties:
@@ -1033,9 +1032,6 @@ components:
           type: string
         content:
           type: string
-        date:
-          type: string
-          format: date
     Blogpost:
       type: object
       properties:
@@ -1110,12 +1106,16 @@ components:
     PageVisit:
       type: object
       properties:
-        totalPages:
-          type: integer
-          format: int32
         totalElements:
           type: integer
           format: int64
+        totalPages:
+          type: integer
+          format: int32
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -1133,10 +1133,6 @@ components:
           format: int32
         pageable:
           $ref: '#/components/schemas/PageableObject'
-        first:
-          type: boolean
-        last:
-          type: boolean
         empty:
           type: boolean
     PageableObject:
@@ -1147,10 +1143,10 @@ components:
           format: int64
         sort:
           $ref: '#/components/schemas/SortObject'
-        pageNumber:
+        pageSize:
           type: integer
           format: int32
-        pageSize:
+        pageNumber:
           type: integer
           format: int32
         unpaged:
@@ -1169,12 +1165,16 @@ components:
     PageUser:
       type: object
       properties:
-        totalPages:
-          type: integer
-          format: int32
         totalElements:
           type: integer
           format: int64
+        totalPages:
+          type: integer
+          format: int32
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -1192,10 +1192,6 @@ components:
           format: int32
         pageable:
           $ref: '#/components/schemas/PageableObject'
-        first:
-          type: boolean
-        last:
-          type: boolean
         empty:
           type: boolean
     User:
@@ -1220,12 +1216,16 @@ components:
     PageReservation:
       type: object
       properties:
-        totalPages:
-          type: integer
-          format: int32
         totalElements:
           type: integer
           format: int64
+        totalPages:
+          type: integer
+          format: int32
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -1243,21 +1243,21 @@ components:
           format: int32
         pageable:
           $ref: '#/components/schemas/PageableObject'
-        first:
-          type: boolean
-        last:
-          type: boolean
         empty:
           type: boolean
     PageBlogpost:
       type: object
       properties:
-        totalPages:
-          type: integer
-          format: int32
         totalElements:
           type: integer
           format: int64
+        totalPages:
+          type: integer
+          format: int32
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -1275,9 +1275,5 @@ components:
           format: int32
         pageable:
           $ref: '#/components/schemas/PageableObject'
-        first:
-          type: boolean
-        last:
-          type: boolean
         empty:
           type: boolean
